@@ -7,7 +7,6 @@
     "serve": "parcel watch index.html",
     "build": "parcel build index.html"
   },
-  "author": "artemeesenin <artemiquss@yandex.ru>",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^1.12.4"

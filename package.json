@@ -8,7 +8,6 @@
     "type": "git",
     "url": "git+https://github.com/ArtemeeSenin/manning-micro-frontends.git"
   },
-  "author": "artemeesenin <artemiquss@yandex.ru>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ArtemeeSenin/manning-micro-frontends/issues"
