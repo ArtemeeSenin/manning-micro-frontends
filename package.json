@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "nodemon",
+    "serve": "npm run nodemon -- ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -12,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/ArtemeeSenin/manning-micro-frontends/issues"
   },
-  "homepage": "https://github.com/ArtemeeSenin/manning-micro-frontends#readme"
+  "homepage": "https://github.com/ArtemeeSenin/manning-micro-frontends#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
