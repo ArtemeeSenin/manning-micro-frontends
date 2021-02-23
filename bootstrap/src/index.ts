@@ -1,5 +1,7 @@
 import { loadDocument } from './load-document';
+// @ts-ignore
 import config from './config.json';
+import mountMicroFrontendInPage from "./mount";
 
 function getPathId(path: string): string {
   const MicroFrontendPathMatch = 1;
@@ -27,5 +29,6 @@ const mfePathId = getPathId(window.location.pathname);
 const mfeName = getMicroFrontendNameFromPathId(mfePathId);
 const mfePath = getMicroFrontendEntryPoint(mfeName);
 
-loadDocument(mfePath).then(console.log)
+loadDocument(mfePath)
+  .then(microFrontendDocument => mountMicroFrontendInPage(mfeName, microFrontendDocument))
 
