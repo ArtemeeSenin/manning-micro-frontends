@@ -11,7 +11,7 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
-    path: "/signin",
+    path: "/sign-in",
     name: "SignIn",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -23,7 +23,7 @@ const routes: Array<RouteConfig> = [
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
+  base: 'hello', // process.env.BASE_URL,
   routes
 });
 
