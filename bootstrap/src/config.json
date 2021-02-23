@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "name": "welcome",
+      "path": "hello"
+    },
+    {
+      "name": "music",
+      "path": "play"
+    }
+  ]
+}

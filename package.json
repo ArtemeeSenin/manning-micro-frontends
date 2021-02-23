@@ -9,7 +9,7 @@
     "serve": "npm run nodemon -- ./bin/www",
     "install:welcome": "npm install --prefix welcome",
     "install:music": "npm install --prefix music",
-    "install:boostrap": "npm installl --prefix bootstrap",
+    "install:boostrap": "npm install --prefix bootstrap",
     "install:all": "npm run run-all -- install:bootstrap -p install:welcome -p install:music",
     "dev:welcome": "npm run serve --prefix welcome",
     "dev:music": "npm run serve --prefix music",
