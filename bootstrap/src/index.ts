@@ -1,6 +1,6 @@
 import { loadDocument } from './load-document';
 import config from './config.json';
-import mountMicroFrontendInPage from "./mount";
+import { mountMicroFrontendInPage } from './mount';
 
 function getPathId(path: string): string {
   const MicroFrontendPathMatch = 1;
