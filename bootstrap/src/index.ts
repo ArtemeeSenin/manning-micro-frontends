@@ -1,5 +1,4 @@
 import { loadDocument } from './load-document';
-// @ts-ignore
 import config from './config.json';
 import mountMicroFrontendInPage from "./mount";
 
@@ -14,7 +13,7 @@ function getMicroFrontendNameFromPathId(pathId: string): string {
   const routes = config.routes;
   if (routes.length === 0) { throw new Error('No route defined'); }
 
-  const route = routes.find(({path}) => path === pathId);
+  const route = routes.find(({path}: {path: string}) => path === pathId);
 
   if (!route) { throw new Error(`No application matches path id: ${pathId}`)}
 
