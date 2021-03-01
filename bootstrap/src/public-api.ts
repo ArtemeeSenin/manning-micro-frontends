@@ -1,6 +1,6 @@
 export interface IBootstrapRouter {
   history: ReadonlyArray<string>;
-  activateMicroFrontend<T>(path: string): Promise<T>;
+  navigateTo<T>(path: string): Promise<T>;
 }
 export interface IBootstrapPublicAPI {
   router: IBootstrapRouter;

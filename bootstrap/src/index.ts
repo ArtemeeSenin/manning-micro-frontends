@@ -7,4 +7,4 @@ const publicAPI = {
 
 exposePublicApi(publicAPI);
 
-publicAPI.router.activateMicroFrontend(window.location.pathname);
+publicAPI.router.navigateTo(window.location.pathname);
