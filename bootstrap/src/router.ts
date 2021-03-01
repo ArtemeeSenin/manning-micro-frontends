@@ -1,12 +1,12 @@
 import config from "./config.json";
 import {loadDocument} from "./load-document";
-import {createContainer, mountMicroFrontendInPage, unmountMicroFrontendFromPage} from "./mount";
+import {mountMicroFrontendInPage, unmountMicroFrontendFromPage} from "./mount";
 import {IBootstrapRouter} from "./public-api";
 
 export class Router implements IBootstrapRouter {
   history: ReadonlyArray<string> = [];
 
-  activateMicroFrontend(path: string): Promise<any> {
+  navigateTo(path: string): Promise<any> {
     if (this.history.length !== 0) {
       unmountMicroFrontendFromPage();
     }

@@ -11,5 +11,5 @@ app.all('/*', function(req, res) {
   res.sendFile('index.html', { root: path.join(__dirname, 'bootstrap/dist') });
 });
 
-app.listen(3000, () => console.log('Server listening on port 3000'))
+app.listen(3001, () => console.log('Server listening on port 3000'))
 
