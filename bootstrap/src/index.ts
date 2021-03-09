@@ -1,10 +1,10 @@
-import {exposePublicApi} from "./public-api";
+import {exposeBootstrapApi} from "./public-api";
 import {Router} from "./router";
 
 const publicAPI = {
   router: new Router(),
 }
 
-exposePublicApi(publicAPI);
+exposeBootstrapApi(publicAPI);
 
 publicAPI.router.navigateTo(window.location.pathname);

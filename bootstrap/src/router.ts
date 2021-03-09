@@ -25,6 +25,10 @@ export class Router implements IBootstrapRouter {
   }
 }
 
+function assertIsValidPathId(pathId: any): pathId is 'hello' | 'play' {
+  const paths = ['hello', 'play'];
+  return paths.includes(pathId);
+}
 
 function getPathId(path: string): string {
   const MicroFrontendPathMatch = 1;
@@ -35,9 +39,10 @@ function getMicroFrontendNameFromPathId(pathId: string): string {
   if (!config?.routes) { throw new Error('No route configuration'); }
 
   const routes = config.routes;
-  if (routes.length === 0) { throw new Error('No route defined'); }
+  if (Object.keys(routes).length === 0) { throw new Error('No route defined'); }
+  if (!assertIsValidPathId(pathId)) { throw new Error('Invalid route'); }
 
-  const route = routes.find(({path}: {path: string}) => path === pathId);
+  const route = routes[pathId];
 
   if (!route) { throw new Error(`No application matches path id: ${pathId}`)}
 

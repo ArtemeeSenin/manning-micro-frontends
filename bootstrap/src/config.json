@@ -1,12 +1,10 @@
 {
-  "routes": [
-    {
-      "name": "welcome",
-      "path": "hello"
+  "routes": {
+    "hello": {
+      "name": "welcome"
     },
-    {
-      "name": "music",
-      "path": "play"
+    "play": {
+      "name": "music"
     }
-  ]
+  }
 }

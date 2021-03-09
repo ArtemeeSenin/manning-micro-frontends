@@ -6,10 +6,10 @@ export interface IBootstrapPublicAPI {
   router: IBootstrapRouter;
 }
 
-export function exposePublicApi(api: IBootstrapPublicAPI): void {
+export function exposeBootstrapApi(api: IBootstrapPublicAPI): void {
   (window as any).bootstrap = api;
 }
 
-export function getPublicApi(): IBootstrapPublicAPI {
+export function getBootstrapApi(): IBootstrapPublicAPI {
   return (window as any).bootstrap;
 }
