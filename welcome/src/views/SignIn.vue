@@ -14,7 +14,7 @@
 <script lang="ts">
   import Vue from 'vue'
   import axios from 'axios';
-  import {getBootstrapApi} from "../../../bootstrap/src/public-api";
+  import {getBootstrapApi} from "@/bootstrap";
 
   const AUTH_URL = 'https://buildingmfe.maxgallo.io/api/login';
 
