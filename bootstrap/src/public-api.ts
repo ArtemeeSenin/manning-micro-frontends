@@ -8,6 +8,10 @@ export interface IBootstrapPublicAPI {
   router: IBootstrapRouter;
   lifecycle: {
     [key in keyof typeof Lifecycle]: Lifecycle
+  },
+  authentication: {
+    setToken(token: string): void;
+    getToken(): string | null;
   }
 }
 

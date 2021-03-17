@@ -1,10 +1,14 @@
 {
   "routes": {
     "hello": {
-      "name": "welcome"
+      "name": "welcome",
+      "private": false
     },
     "play": {
-      "name": "music"
+      "name": "music",
+      "private": true
     }
-  }
+  },
+  "defaultPath": "/hello",
+  "defaultPathForAuthorised": "/play"
 }

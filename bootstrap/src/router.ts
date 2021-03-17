@@ -3,6 +3,7 @@ import {loadDocument} from "./load-document";
 import {mountMicroFrontendInPage, unmountMicroFrontendFromPage} from "./mount";
 import {IBootstrapRouter} from "./public-api";
 import {callLifecycle, Lifecycle} from "./lifecycle";
+import {isUserAuthenticated} from "./auth";
 
 export class Router implements IBootstrapRouter {
   history: ReadonlyArray<string> = [];
@@ -16,6 +17,25 @@ export class Router implements IBootstrapRouter {
   }
 
   navigateTo(path: string): Promise<any> {
+    const mfePathId = getPathId(path);
+    let mfe;
+    try {
+      mfe = getMicroFrontendByPathId(mfePathId);
+      if (!isUserAuthenticated && mfe.private) {
+        return this.navigateTo(config.defaultPath);
+      }
+    } catch(e) {
+      console.warn(e.message);
+      return this.navigateTo(config.defaultPath);
+    }
+
+    const mfeName = mfe.name;
+    const mfePath = getMicroFrontendEntryPoint(mfeName);
+
+    if (isUserAuthenticated && !mfe.private) {
+      return this.navigateTo(config.defaultPathForAuthorised);
+    }
+
     if (this.history.length !== 0) {
       const currentMicroFrontendName = this.currentMicroFrontendName;
 
@@ -28,9 +48,6 @@ export class Router implements IBootstrapRouter {
       })
     }
 
-    const mfePathId = getPathId(path);
-    const mfeName = getMicroFrontendNameFromPathId(mfePathId);
-    const mfePath = getMicroFrontendEntryPoint(mfeName);
     return loadDocument(mfePath)
       .then(microFrontendDocument => {
         callLifecycle(Lifecycle.WILL_MOUNT, {
@@ -63,7 +80,7 @@ function getPathId(path: string): string {
   return path.split('/')[MicroFrontendPathMatch];
 }
 
-function getMicroFrontendNameFromPathId(pathId: string): string {
+function getMicroFrontendByPathId(pathId: string): { name: string, private: boolean } | never {
   if (!config?.routes) { throw new Error('No route configuration'); }
 
   const routes = config.routes;
@@ -74,7 +91,11 @@ function getMicroFrontendNameFromPathId(pathId: string): string {
 
   if (!route) { throw new Error(`No application matches path id: ${pathId}`)}
 
-  return route.name;
+  return route;
+}
+
+function getMicroFrontendNameFromPathId(pathId: string): string {
+  return getMicroFrontendByPathId(pathId).name;
 }
 
 function getMicroFrontendEntryPoint(name: string): string {
