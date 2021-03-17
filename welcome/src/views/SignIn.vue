@@ -18,18 +18,14 @@
 
   const AUTH_URL = 'https://buildingmfe.maxgallo.io/api/login';
 
-  function assertBootstrapIsAvailable(bootstrap: any): true | never {
-    if (!bootstrap) {
-      throw new Error('Bootstrap is not available');
-    }
-
-    return true;
-  }
   function navigateToMusic() {
     const bootstrap = getBootstrapApi();
-    assertBootstrapIsAvailable(bootstrap);
-
     return bootstrap.router.navigateTo('/play');
+  }
+
+  function setToken(token: string) {
+    const bootstrap = getBootstrapApi();
+    bootstrap.authentication.setToken(token);
   }
 
   export default Vue.extend({
@@ -48,8 +44,8 @@
         if (!response) { return; }
 
         const { data: { data: { token } } } = response;
-        console.log('TOKEN: ', token);
 
+        setToken(token);
         return navigateToMusic();
       }
     }
